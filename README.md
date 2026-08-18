@@ -76,7 +76,7 @@ Este proyecto tiene como objetivos principales:
 
 # 🏗 Arquitectura General
 
-```
+```mermaid
 flowchart LR
     A[Dataset] --> B[Entrenamiento]
     B --> C[Modelo Random Forest]
@@ -92,7 +92,7 @@ La arquitectura separa claramente el entrenamiento del modelo y la inferencia, p
 
 # 🔄 Flujo MLOps
 
-```
+```mermaid
 flowchart LR
     A[Dataset] --> B[Preprocesamiento]
     B --> C[Entrenamiento]
@@ -236,7 +236,7 @@ prediccion_obesidad_mlops/
 # 📁 Descripción de Carpetas
 
 | Carpeta    | Descripción                   |
-| ---------- | ----------------------------- |
+| ---------- | ------------------------------ |
 | 📂 app      | Implementación de la API REST |
 | 🤖 training | Entrenamiento del modelo      |
 | 💾 models   | Modelo entrenado y artefactos |
@@ -360,13 +360,13 @@ Retorna información general de la API.
 
 ### Request
 
-```
+```http
 GET /
 ```
 
 ### Response
 
-```
+```json
 {
   "message": "Obesity Prediction API",
   "version": "1.0.0"
@@ -381,13 +381,13 @@ Permite verificar que la API y el modelo se encuentran correctamente cargados.
 
 ### Request
 
-```
+```http
 GET /health
 ```
 
 ### Response
 
-```
+```json
 {
   "status": "ok",
   "model_loaded": true
@@ -418,7 +418,7 @@ Realiza una predicción para un único registro.
 
 ### Ejemplo de Request
 
-```
+```json
 {
   "Gender": "Male",
   "Age": 25,
@@ -449,7 +449,7 @@ curl -X POST http://localhost:8000/predict \
 
 ### Response
 
-```
+```json
 {
   "prediction": "Normal_Weight"
 }
@@ -463,7 +463,7 @@ Permite enviar múltiples registros para obtener varias predicciones en una úni
 
 ### Response
 
-```
+```json
 {
   "predictions": [
     "Normal_Weight",
@@ -564,7 +564,7 @@ Cada vez que se realiza un **Push** o un **Pull Request**, el pipeline ejecuta a
 
 # 🔄 Pipeline de Integración Continua
 
-```
+```mermaid
 flowchart LR
     A[Push o Pull Request] --> B[lint]
     B --> C[test]
@@ -577,7 +577,7 @@ flowchart LR
 
 # 📈 Flujo de Predicción
 
-```
+```mermaid
 flowchart LR
     A[Cliente] --> B[API FastAPI]
     B --> C[Validación]
@@ -692,7 +692,7 @@ Este proyecto fue desarrollado por:
 
 Durante el desarrollo de este proyecto se utilizaron asistentes de IA como apoyo, conforme a lo permitido en la pauta de evaluación:
 
-- **Claude (Cowork)**: revisión de la pauta de evaluación frente al estado del repositorio, identificación de brechas respecto a la rúbrica, corrección del pipeline de CI/CD, validación de entradas de la API, y redacción del borrador del informe técnico.
+- **Claude (Cowork)**: revisión de la pauta de evaluación frente al estado del repositorio, identificación de brechas respecto a la rúbrica, corrección del pipeline de CI/CD, validación de entradas de la API, corrección de los diagramas Mermaid y del resaltado de sintaxis del README, y redacción del borrador del informe técnico.
 
 ---
 
