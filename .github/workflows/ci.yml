@@ -1,4 +1,4 @@
-﻿name: ci
+name: ci
 
 on:
   push:
@@ -68,3 +68,24 @@ jobs:
       - name: Logs del contenedor (si algo falla)
         if: failure()
         run: docker logs obesity-api
+
+  deploy:
+    needs: smoke
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disparar despliegue en Render
+        run: |
+          curl --fail -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+      - name: Esperar y verificar servicio en produccion
+        run: |
+          for i in $(seq 1 20); do
+            if curl --fail --silent https://prediccion-obesidad-mlops.onrender.com/health; then
+              echo "Servicio disponible en produccion."
+              exit 0
+            fi
+            echo "Intento $i: aun no responde, reintentando en 15s..."
+            sleep 15
+          done
+          echo "El servicio no respondio a tiempo tras el despliegue."
+          exit 1
