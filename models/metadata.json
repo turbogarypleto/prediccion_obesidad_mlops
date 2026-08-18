@@ -1,4 +1,4 @@
-{
+﻿{
     "model_type": "RandomForestClassifier",
     "target": "Obesity",
     "features": [
@@ -35,5 +35,6 @@
     "train_samples": 1688,
     "test_samples": 423,
     "total_samples": 2111,
-    "n_estimators": 100
+    "n_estimators": 100,
+    "training_date": "2026-08-18"
 }
