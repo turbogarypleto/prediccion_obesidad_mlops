@@ -692,10 +692,7 @@ Este proyecto fue desarrollado por:
 
 Durante el desarrollo de este proyecto se utilizaron asistentes de IA como apoyo, conforme a lo permitido en la pauta de evaluación:
 
-- **[COMPLETAR: herramienta usada, ej. GitHub Copilot / ChatGPT]**: [para qué se usó, ej. "generación de código base de los endpoints, revisión de estilo"].
 - **Claude (Cowork)**: revisión de la pauta de evaluación frente al estado del repositorio, identificación de brechas respecto a la rúbrica, corrección del pipeline de CI/CD, validación de entradas de la API, y redacción del borrador del informe técnico.
-
-Cada integrante del equipo es responsable de explicar y defender cualquier parte del código del repositorio, independientemente de si se usó un asistente de IA como apoyo durante su desarrollo.
 
 ---
 
