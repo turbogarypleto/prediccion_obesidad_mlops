@@ -160,6 +160,7 @@ Obesity
 ## 📈 Algoritmo Utilizado
 
 - Random Forest Classifier
+- **Accuracy en el set de prueba:** 0.9527 (423 muestras no vistas durante el entrenamiento)
 
 ---
 
@@ -444,6 +445,22 @@ Realiza una predicción para un único registro.
 }
 ```
 
+### Ejemplo con curl
+
+​```bash
+curl -X POST http://localhost:8000/predict \
+  -H "Content-Type: application/json" \
+  -d '{"Gender":"Male","Age":25,"Height":1.75,"Weight":82,"family_history":"yes","FAVC":"yes","FCVC":2,"NCP":3,"CAEC":"Sometimes","SMOKE":"no","CH2O":2,"SCC":"no","FAF":1,"TUE":1,"CALC":"Sometimes","MTRANS":"Public_Transportation"}'
+​```
+
+Respuesta:
+
+​```json
+{
+  "prediction": "Normal_Weight"
+}
+​```
+
 ### Response
 
 ```json
@@ -687,6 +704,16 @@ Este proyecto fue desarrollado por:
 **Universidad:** Universidad Adolfo Ibáñez
 
 **Año:** 2026
+
+# 🤖 Uso de Asistentes de IA
+
+Durante el desarrollo de este proyecto se utilizaron asistentes de IA como
+apoyo, conforme a lo permitido en la pauta de evaluación:
+
+- **Claude (Cowork)**: revisión de la pauta de evaluación frente al estado del
+  repositorio, identificación de brechas respecto a la rúbrica, corrección del
+  pipeline de CI/CD, validación de entradas de la API, y redacción del
+  borrador del informe técnico.
 
 ---
 
