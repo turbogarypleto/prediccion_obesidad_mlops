@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+﻿from pydantic import BaseModel, Field
 
 # ======================================================
 # 1. Esquema de entrada para predicción
@@ -6,19 +6,19 @@ from pydantic import BaseModel, Field
 
 class PredictionRequest(BaseModel):
     Gender: str = Field(...)
-    Age: float = Field(...)
-    Height: float = Field(...)
-    Weight: float = Field(...)
+    Age: float = Field(..., gt=0, le=120)
+    Height: float = Field(..., gt=0, le=2.5)
+    Weight: float = Field(..., gt=0, le=300)
     family_history: str = Field(...)
     FAVC: str = Field(...)
-    FCVC: float = Field(...)
-    NCP: float = Field(...)
+    FCVC: float = Field(..., ge=1, le=3)
+    NCP: float = Field(..., ge=1, le=4)
     CAEC: str = Field(...)
     SMOKE: str = Field(...)
-    CH2O: float = Field(...)
+    CH2O: float = Field(..., ge=1, le=3)
     SCC: str = Field(...)
-    FAF: float = Field(...)
-    TUE: float = Field(...)
+    FAF: float = Field(..., ge=0, le=3)
+    TUE: float = Field(..., ge=0, le=2)
     CALC: str = Field(...)
     MTRANS: str = Field(...)
 
