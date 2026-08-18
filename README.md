@@ -6,6 +6,21 @@
 
 ---
 
+# 🌍 Servicio en producción
+
+**URL pública:** [https://prediccion-obesidad-mlops.onrender.com](https://prediccion-obesidad-mlops.onrender.com)
+
+- **Proveedor:** [Render](https://render.com) (Web Service, Free Plan).
+- **Documentación interactiva:** [https://prediccion-obesidad-mlops.onrender.com/docs](https://prediccion-obesidad-mlops.onrender.com/docs)
+- **Despliegue automatizado:** el job `deploy` del pipeline (`.github/workflows/ci.yml`) dispara el despliegue en Render mediante un Deploy Hook, y solo se ejecuta si los jobs `lint`, `test`, `build` y `smoke` pasaron antes. Las credenciales del hook viven en GitHub Secrets (`RENDER_DEPLOY_HOOK`), no en el repositorio.
+- **Limitación conocida:** al ser un plan gratuito, la instancia se duerme tras un período de inactividad. La primera consulta después de estar dormida puede demorar hasta 50 segundos o más en responder; las siguientes son rápidas.
+
+```bash
+curl https://prediccion-obesidad-mlops.onrender.com/health
+```
+
+---
+
 # 📖 Descripción
 
 Este proyecto implementa una solución completa de **Machine Learning** siguiendo los principios de **MLOps (Machine Learning Operations)** para predecir el **nivel de obesidad** de una persona utilizando variables antropométricas y hábitos de vida.
@@ -41,6 +56,7 @@ Este proyecto tiene como objetivos principales:
 
 # 📚 Tabla de Contenidos
 
+- 🌍 Servicio en producción
 - 📖 Descripción
 - 🎯 Objetivos
 - 🏗 Arquitectura General
@@ -71,6 +87,7 @@ Este proyecto tiene como objetivos principales:
 | Pytest           | ✅      |
 | Ruff             | ✅      |
 | GitHub Actions   | ✅      |
+| Despliegue público | ✅    |
 
 ---
 
@@ -624,7 +641,6 @@ Durante el desarrollo del proyecto se aplicaron diversas buenas prácticas de in
 Como trabajo futuro podrían incorporarse nuevas funcionalidades, entre ellas:
 
 - 🔐 Autenticación mediante JWT.
-- ☁️ Despliegue en Azure, AWS o Google Cloud.
 - 📈 Monitoreo del rendimiento del modelo.
 - 📊 Integración con MLflow.
 - 🗄️ Registro de predicciones en una base de datos.
@@ -661,7 +677,6 @@ El resultado es una aplicación modular, reproducible y preparada para ser despl
 Si bien el proyecto cumple con los objetivos planteados para la asignatura, existen oportunidades de mejora que podrían incorporarse en una versión de producción:
 
 - 🔒 Incorporar autenticación y autorización mediante JWT para proteger los endpoints.
-- ☁️ Desplegar la API en un servicio Cloud (Azure, AWS o Google Cloud).
 - 📊 Implementar monitoreo del rendimiento del modelo y de la API en producción.
 - 🔄 Automatizar el reentrenamiento del modelo cuando se disponga de nuevos datos.
 - 🗄️ Registrar las predicciones en una base de datos para facilitar auditorías y análisis posteriores.
@@ -692,7 +707,7 @@ Este proyecto fue desarrollado por:
 
 Durante el desarrollo de este proyecto se utilizaron asistentes de IA como apoyo, conforme a lo permitido en la pauta de evaluación:
 
-- **Claude (Cowork)**: revisión de la pauta de evaluación frente al estado del repositorio, identificación de brechas respecto a la rúbrica, corrección del pipeline de CI/CD, validación de entradas de la API, corrección de los diagramas Mermaid y del resaltado de sintaxis del README, y redacción del borrador del informe técnico.
+- **Claude (Cowork)**: revisión de la pauta de evaluación frente al estado del repositorio, identificación de brechas respecto a la rúbrica, corrección del pipeline de CI/CD, validación de entradas de la API, corrección de los diagramas Mermaid y del resaltado de sintaxis del README, configuración del despliegue automatizado en Render vía GitHub Actions, y redacción del borrador del informe técnico.
 
 ---
 
